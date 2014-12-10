@@ -2,14 +2,14 @@
 
 namespace WebPurify;
 
-use Psr\Log\LogLevel;
-use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerInterface;
+//use Psr\Log\LogLevel;
+//use Psr\Log\LoggerAwareInterface;
+//use Psr\Log\LoggerInterface;
 
 /**
  * @package agencyrepublic/webpurify
  */
-abstract class WebPurify implements LoggerAwareInterface
+abstract class WebPurify //implements LoggerAwareInterface
 {
 
     /* API Key */
@@ -96,10 +96,10 @@ abstract class WebPurify implements LoggerAwareInterface
 
     /* psr-3 */
 
-    public function setLogger(LoggerInterface $logger) 
-    {
-        $this->logger = $logger;
-    }
+//    public function setLogger(LoggerInterface $logger) 
+//    {
+//        $this->logger = $logger;
+//    }
 
     /* helpers */
 
@@ -151,13 +151,13 @@ abstract class WebPurify implements LoggerAwareInterface
 
         curl_close($ci);
 
-        $this->log(LogLevel::DEBUG, $url);
+//        $this->log(LogLevel::DEBUG, $url);
 
         if ($responseRaw === false) {
             throw new WebPurifyException($curlError, $curlErrno);
         }
 
-        $this->log(LogLevel::DEBUG, $responseRaw);
+//        $this->log(LogLevel::DEBUG, $responseRaw);
 
         return $responseRaw;
     }
@@ -235,15 +235,15 @@ abstract class WebPurify implements LoggerAwareInterface
      *
      * Pass information through to monolog
      */
-    protected function log()
-    {
-        if (!$this->logger) {
-            return;
-        }
-
-        return call_user_func_array(
-            array($this->logger, 'log'),
-            func_get_args()
-        );
-    }
+//    protected function log()
+//    {
+//        if (!$this->logger) {
+//            return;
+//        }
+//
+//        return call_user_func_array(
+//            array($this->logger, 'log'),
+//            func_get_args()
+//        );
+//    }
 }
